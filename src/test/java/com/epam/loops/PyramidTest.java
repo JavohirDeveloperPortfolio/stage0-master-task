@@ -40,7 +40,6 @@ class PyramidTest extends BaseIOTest {
         Pyramid pyramid = new Pyramid();
 
         pyramid.printPyramid(6);
-
         assertOutEquals(expected);
     }
 
