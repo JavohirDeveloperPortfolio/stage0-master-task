@@ -112,12 +112,38 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-//        int[][] result = new int[arr.length][];
-//        int[] temp = new int[arr.length];
-//        for (int i = 0; i < arr.length; i ++){
-//            temp[i] = arr[i].length;
-//        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = sort(arr[i]);
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[i].length < arr[j].length){
+                    int[] temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
+                if (arr[i].length == arr[j].length && i < j) {
+                    if (arr[i][0] < arr[j][0]) {
+                        int[] temp = arr[j];
+                        arr[j] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
+            }
+        }
+        return arr;
+    }
 
+    public int[] sort(int[] arr){
+        for (int i=0;i< arr.length-1;++i) {
+            for (int j = 0; j < arr.length - i - 1; ++j) {
+                if (arr[j + 1] < arr[j]) {
+                    int swap = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = swap;
+                }
+            }
+        }
         return arr;
     }
 
